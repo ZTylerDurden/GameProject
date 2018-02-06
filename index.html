@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script type="text/javascript" src="game.js"></script>
   <link rel="stylesheet" href="style.css">
   <title>ContraBoss</title>
 </head>
-<body>
+<body onload="start()">
   <div class="game-intro">
-    <img src="./images/logo.png" alt="" class="logo-img">
+    <!-- <img src="./images/logo.png" alt="" class="logo-img"> -->
     <br>
     <button id="start-button">StartGame</button>
     <p>Use the left and right arrow to control the car!</p>
-    <img src="./images/arrows.png" alt="" class="arrows-img">
+    <!--<img src="./images/arrows.png" alt="" class="arrows-img"> -->
   </div>
   <div id="game-board">
   <canvas id="canvas" width="800" height="612"></canvas>
   </div>
+  <script type="text/javascript" src="game.js"></script>
 </body>
 </html>
