@@ -1,6 +1,8 @@
-body {
+ body {
     padding: 0;
     text-align: center;
+    background-color: black;
+    z-index: -1;
   }
   
   .game-intro {
@@ -31,11 +33,10 @@ body {
     border-radius: 5px;
     margin-bottom: 20px;
   }
-  
-  #game-board {
-      float: left;
-      padding: 20px 0px;
-  }
+  /* #game-board { */
+      /* float: left; */
+      /* padding: 20px 0px; */
+  /* } */
   
   canvas{
     background-image: url("images/Background800.png");
