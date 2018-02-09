@@ -49,6 +49,9 @@ bBImage.src = "images/BassBuster1.png";
 var bossImage = new Image();
 bossImage.src = "images/Boss1.png";
 
+var bossFlashImg = new Image();
+bossFlashImg.src = "images/BossFlash.png"
+
 var bossBulletImg = new Image();
 bossBulletImg.src = "images/BossBullet.png";
 
@@ -62,8 +65,18 @@ var busterPulse = new Audio("Mp3/BusterShot.mp3");
 busterPulse.preload = 'auto';
 busterPulse.load();
 
+var bossBlam = new Audio("Mp3/BossBlam.mp3");
+bossBlam.preload = 'auto';
+bossBlam.load();
+
 function playSound(){
     var click = busterPulse.cloneNode();
+    // click.volume = volume;
+    click.play();
+}
+
+function playSound2(){
+    var click = bossBlam.cloneNode();
     // click.volume = volume;
     click.play();
 }
@@ -178,8 +191,12 @@ var boss = {
     draw: function() {
       ctx.drawImage(this.image, this.x, this.y, 100, 100);
     }
-
 }
+
+    function bossFlash() {
+        ctx.drawImage(bossFlashImg, boss.x, boss.y, boss.width, boss.height)
+    }
+  
 
 function Shot () {
   this.height = 36;
@@ -327,13 +344,14 @@ function bossHit() {
        if (collisionA(shot,boss)) {
            boss.health -= 2;
            shot.live = false;
+           bossFlash();
+           playSound2();
        }
     })
     var result = shotsArr.filter((shot) => {
         return shot.live == true;
     });
     shotsArr = result;
-
 }
 
 updateCanvas = () => {
