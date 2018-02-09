@@ -58,7 +58,15 @@ rightBulletImg.src = "images/RightShot.png";
 var leftBulletImg = new Image();
 leftBulletImg.src = "images/LeftShot.png";
 
-var busterPulse = new Audio("Mp3/BusterShot.mp3")
+var busterPulse = new Audio("Mp3/BusterShot.mp3");
+busterPulse.preload = 'auto';
+busterPulse.load();
+
+function playSound(){
+    var click = busterPulse.cloneNode();
+    // click.volume = volume;
+    click.play();
+}
 
 var contraLevel = new Audio("Mp3/ContraL1.mp3")
 
@@ -220,7 +228,7 @@ var intervalCounter = (num) => {
 
 var pushShot = () => {
   shotsArr.push(new Shot());
-  busterPulse.play();
+//   busterPulse.play();
 
 };
 
@@ -375,7 +383,12 @@ window.addEventListener('keydown', (e) => {
   switch (e.which) {
     case 37: bShooter.moveLeft(); break;
     case 39: bShooter.moveRight(); break;
-    case 32: pushShot(); break;
+    case 32: 
+        pushShot(); 
+        // busterPulse.play();
+        playSound();
+
+        break;
     case 13: if (gameStarted === false) {
         start();
         contraLevel.play();
